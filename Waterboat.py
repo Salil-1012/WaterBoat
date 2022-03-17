@@ -197,8 +197,7 @@ if __name__ == "__main__":
         elif 'dashboard' in problem:
             webbrowser.open_new_tab("http://112.196.50.43/login.asp")
         
-        elif 'download video' in problem:
-            download
+      
 
             
             
