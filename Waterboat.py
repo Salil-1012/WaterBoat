@@ -6,9 +6,10 @@ import webbrowser
 import os                                      
 import time                                     
 from googletrans import Translator            
-import wikipedia   
-import pywhatkit                             
+import wikipedia                               
 from Downloader import Downloader
+import subprocess
+
 
 
 System_engine = pyttsx3.init('sapi5') 
@@ -59,7 +60,6 @@ def Voice_to_txt():
             file.write("\n")
             print("SUCCESSFULLY WRITEEN IN THE FILE NOTES ")
             file.close()
-            pywhatkit.text_to_handwriting(problem,rgb=(0,0,255))
     except Exception as e:
         print("SPEAK AGAIN YOUR VOCIE NOT AUDIBLE")
 
@@ -73,7 +73,7 @@ def OBEY_MY_WORDS():
     with sr.Microphone() as source:
         print("...........Yes you are audaible. Please speak........")
         speak_my_boy("Ask your query")
-        takes.pause_threshold = 1      
+        takes.pause_threshold = 0.8      
         sound = takes.listen(source)
     try:
         print("...........Under Process........")
@@ -123,6 +123,9 @@ if __name__ == "__main__":
     time.sleep(1)
     print(" 10) ------->  WIKIPEDIA ")
     speak_my_boy("I ALSO SEARCH  YOUR WORDS ON WIKIPEDIA") 
+    time.sleep(1)
+    print(" 11) ------->  PLAY GAME ")
+    speak_my_boy("YOU CAN ALSO PLAY THE GAME") 
 
     while True:
         problem = OBEY_MY_WORDS().lower()
@@ -157,6 +160,9 @@ if __name__ == "__main__":
 
         elif 'music' in problem:
             os.startfile("C:\\Users\\asd\\Music\\New folder")
+
+        elif 'game' in problem:
+            subprocess.call(" python game.py 1", shell=True)
 
         elif 'introduce me' in problem:
             Intro_me()
@@ -197,7 +203,8 @@ if __name__ == "__main__":
         elif 'dashboard' in problem:
             webbrowser.open_new_tab("http://112.196.50.43/login.asp")
         
-      
+        elif 'download' in problem:
+            subprocess.call(" python Downloader.py 1", shell=True)
 
             
             
